@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7pko6wiso3k5"]
+
+[ext_resource type="Script" path="res://ui/VirtualButton.gd" id="1"]
+
+[node name="VirtualButton" type="Control"]
+custom_minimum_size = Vector2i(64, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1302.0
+offset_bottom = -704.0
+script = ExtResource("1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+ignore_texture_size = true

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+@onready var _label: Label = $Label
+@onready var _player: Node3D = get_tree().get_nodes_in_group(\"player\")[0]
+
+func _process(delta):
+    # just dump some information checked the screen
+    # this is an optional node that might be useful in some cases, but feel free to just remove_at it
+    var player_pos: Vector3 = _player.global_transform.origin
+    _label.text = \"Player Position: (%.2f, %.2f, %.2f)\\n\" % [player_pos.x, player_pos.y, player_pos.z]
+    _label.text += \"Move Direction: (%.2f, %.2f)\\n\" % [_player._move_dir.x, _player._move_dir.y]
+    _label.text += \"Is Jumping: %s\\n\" % [_player._is_jumping]
+    _label.text += \"Player Velocity: (%.2f, %.2f, %.2f)\\n\" % [_player._velocity.x, _player._y_velocity, _player._velocity.z]
+    _label.text += \"Player Rotation: %.2f\\n\" % [rad_to_deg(_player._rotation)]
+    _label.text += \"Jumps: %d\\n\" % [_player._jump_count]
+    _label.text += \"Jump Cooldown: %.2f\\n\" % [_player._jump_cooldown_remaining]
+    _label.text += \"Camera3D Rotation: (%.2f, %.2f)\\n\" % [_player._camera._rot_h, _player._camera._rot_v]
+    _label.text += \"Camera3D Distance: %.2f\" % [_player._camera._distance]
+"
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.0784314, 0.0784314, 0.0784314, 0.505882 )
+
+[node name="Debugger" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 14.0
+custom_styles/normal = SubResource( 1 )
+text = "test test etest"

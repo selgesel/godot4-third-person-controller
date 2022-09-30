@@ -1,0 +1,167 @@
+[gd_scene load_steps=11 format=3 uid="uid://e2bccij4j7ud"]
+
+[ext_resource type="Script" path="res://player/Controls.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dka7avqvntd24" path="res://ui/VirtualThumbStick.tscn" id="2"]
+[ext_resource type="Script" path="res://player/MobileControls.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://b7pko6wiso3k5" path="res://ui/VirtualButton.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://dbnkrhpok1qpe" path="res://assets/icons/icon-swim-up.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bo2lfwsaijgdq" path="res://assets/icons/icon-surge.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bdmlu0xg2heak" path="res://assets/icons/icon-crouch.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://d1iiu33ih47hq" path="res://assets/icons/icon-jump.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://o4ck8e1dsrj1" path="res://assets/icons/icon-sprint.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://c2f37og1tu4c0" path="res://assets/icons/icon-swim-down.png" id="11"]
+
+[node name="Controls" type="Node" groups=["controls"]]
+script = ExtResource("1")
+
+[node name="MobileControls" type="Control" parent="."]
+visible = false
+texture_filter = 6
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
+
+[node name="MoveStick" parent="MobileControls" instance=ExtResource("2")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="Controls" type="Control" parent="MobileControls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -400.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MobileControls/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MobileControls/Controls/VBoxContainer"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="JumpButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer" instance=ExtResource("4")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 96.0
+offset_right = 160.0
+offset_bottom = 64.0
+button_texture = ExtResource("9")
+action = "jump"
+
+[node name="SwimUpButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer" instance=ExtResource("4")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 96.0
+offset_right = 160.0
+offset_bottom = 64.0
+button_texture = ExtResource("5")
+action = "swim_up"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MobileControls/Controls/VBoxContainer"]
+layout_mode = 2
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 160.0
+theme_override_constants/separation = 128
+
+[node name="Placeholder" type="Control" parent="MobileControls/Controls/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="SprintButton" parent="MobileControls/Controls/VBoxContainer/HBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 64.0
+offset_bottom = 64.0
+button_texture = ExtResource("10")
+action = "sprint"
+
+[node name="DashButton" parent="MobileControls/Controls/VBoxContainer/HBoxContainer" instance=ExtResource("4")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+action = ""
+
+[node name="SurgeButton" parent="MobileControls/Controls/VBoxContainer/HBoxContainer" instance=ExtResource("4")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 384.0
+offset_right = 448.0
+offset_bottom = 64.0
+button_texture = ExtResource("6")
+action = "surge"
+
+[node name="CenterContainer2" type="CenterContainer" parent="MobileControls/Controls/VBoxContainer"]
+layout_mode = 2
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 256.0
+
+[node name="CrouchButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer2" instance=ExtResource("4")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 96.0
+offset_right = 160.0
+offset_bottom = 64.0
+button_texture = ExtResource("8")
+action = "crouch"
+
+[node name="SwimDownButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer2" instance=ExtResource("4")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 96.0
+offset_right = 160.0
+offset_bottom = 64.0
+button_texture = ExtResource("11")
+action = "swim_down"

@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://duugmnauemcc7"]
+
+[ext_resource type="PackedScene" uid="uid://c0vnqt6uyxaoa" path="res://player/Player.tscn" id="1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ukb2j"]
+
+[sub_resource type="Sky" id="1"]
+sky_material = SubResource("ProceduralSkyMaterial_ukb2j")
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("1")
+
+[sub_resource type="StandardMaterial3D" id="4"]
+albedo_color = Color(0, 0.490196, 0.0196078, 1)
+
+[sub_resource type="StandardMaterial3D" id="5"]
+albedo_color = Color(0.380392, 0.156863, 0.0588235, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41aqy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.12549, 0.701961, 0.894118, 0.627451)
+
+[sub_resource type="BoxMesh" id="6"]
+material = SubResource("StandardMaterial3D_41aqy")
+size = Vector3(25, 11, 19)
+
+[sub_resource type="BoxShape3D" id="8"]
+size = Vector3(25.7228, 10, 17.671)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.652085, -0.491636, 0.57713, -0.0626096, 0.793559, 0.605263, -0.755556, 0.358549, -0.548249, 0, 2.70409, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_mask = 2
+
+[node name="CSGMesh3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -6, 0)
+size = Vector3(100, 100, 12)
+material = SubResource("4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 0)
+size = Vector3(20, 2, 32)
+
+[node name="CSGBox2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4, -12)
+size = Vector3(6, 4, 6)
+
+[node name="CSGBox3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4, -7)
+size = Vector3(6, 4, 6)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 16)
+polygon = PackedVector2Array(0, 0, 0, 2, 3, 0)
+depth = 4.0
+
+[node name="CSGBox4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -3.61853, -8.32862)
+operation = 2
+size = Vector3(24, 10, 16)
+material = SubResource("5")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24706, 0, 4.67049)
+collision_mask = 5
+
+[node name="Water" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -5.8162, -8)
+collision_layer = 4
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Water"]
+mesh = SubResource("6")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
+shape = SubResource("8")
