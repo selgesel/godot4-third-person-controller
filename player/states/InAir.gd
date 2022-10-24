@@ -1,6 +1,5 @@
 extends PlayerState
 
-@export var dash_cooldown: float = 1
 @export var jump_cooldown: float = .2
 @export var gravity: float = .98
 @export var max_terminal_velocity: float = 50
@@ -22,17 +21,15 @@ func enter():
 
 func process(delta):
     # count down the jump and dash cooldown timers
-    _dash_cooldown_remaining = max(_dash_cooldown_remaining - delta, 0)
     _jump_cooldown_remaining = max(_jump_cooldown_remaining - delta, 0)
 
     # if the player is trying to jump and they CAN jump, transition to the InAir/Jumping state
     if player.controls.is_jumping() && can_jump():
         state_machine.transition_to("InAir/Jumping")
-    elif can_dash() && player.controls.is_dashing():
+    elif player.controls.is_dashing() && player.dash_timer.is_stopped():
         # if the player is trying to dash and they CAN dash, transition to the InAir/Dashing state and
         # set the dash cooldown timer to the cooldown duration
         state_machine.transition_to("InAir/Dashing")
-        _dash_cooldown_remaining = dash_cooldown
 
 func physics_process(delta):
     # set the in air blend position to player's vertical velocity divided by 50, the max. terminal velocity
@@ -54,10 +51,6 @@ func physics_process(delta):
     # otherwise decrease the vertical velocity by gravity, clamp to the max terminal velocity we defined earlier
     player.y_velocity = clamp(player.y_velocity - gravity, -max_terminal_velocity, max_terminal_velocity)
 
-func can_dash():
-    # if the dash cooldown timer is 0 or less the player can dash
-    return _dash_cooldown_remaining <= 0
-
 func can_jump():
     # if the player is checked the floor, or if the current jump count is less than the max jump count and the jump
     # cooldown timer is 0 or less the player can jump
@@ -67,3 +60,4 @@ func accept_jump():
     # increase the jump count and reset the jump cooldown timer
     _jump_count += 1
     _jump_cooldown_remaining = jump_cooldown
+    player.anim_tree.set("parameters/Jump/active", 1)

@@ -5,7 +5,7 @@ A third person player controller with touchscreen support for Godot 4.
 
 This is a complementary code repository for my [YouTube video series](https://www.youtube.com/playlist?list=PLlT0CCZ8Yw0mcxG_D_sSA-Imnc5tiR4tx).
 
-![Preview](./preview.gif)
+![Preview](./preview.gif?v=1)
 
 ## Desktop Controls
 ### Common Actions
