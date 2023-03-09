@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter():
     # set the current animation root state to Crouching
-    player.anim_tree.set("parameters/RootState/current", 2)
+    player.anim_tree.set("parameters/RootState/transition_request", "crouching")
 
 func process(delta):
     # if the player is not trying to crouch, transition back to the OnGround state
