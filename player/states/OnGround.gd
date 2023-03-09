@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter():
     # set the current animation root state to Crouching
-    player.anim_tree.set("parameters/RootState/current", 0)
+    player.anim_tree.set("parameters/RootState/transition_request", "on-ground")
 
 func process(delta):
     # if the jump button is pressed, transition into the InAir/Jumping state immediately

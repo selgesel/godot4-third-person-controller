@@ -58,10 +58,10 @@ xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_broob"]
 switch_mode = 2
-auto_advance = true
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_njbj0"]
-auto_advance = true
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d0nsn"]
 states/unarmed-jump/node = SubResource("AnimationNodeAnimation_xv5f5")
@@ -314,9 +314,12 @@ anim_player = NodePath("../CombatPack/AnimationPlayer")
 active = true
 parameters/Crouching/blend_position = 0
 parameters/Jump/active = false
+parameters/Jump/request = 0
 parameters/Jumping/playback = SubResource("AnimationNodeStateMachinePlayback_8horh")
 parameters/OnGround/blend_position = 0.0
-parameters/RootState/current = 0
+parameters/RootState/current_state = "on-ground"
+parameters/RootState/transition_request = ""
+parameters/RootState/current_index = 0
 parameters/Surging/blend_position = 0.0
 parameters/Swimming/blend_position = 0.0
 

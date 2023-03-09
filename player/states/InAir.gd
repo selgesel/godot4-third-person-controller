@@ -17,7 +17,7 @@ var _jump_cooldown_remaining: float = 0
 
 func enter():
     # set the current animation root state to Crouching
-    player.anim_tree.set("parameters/RootState/current", 1)
+    player.anim_tree.set("parameters/RootState/transition_request", "in-air")
 
 func process(delta):
     # count down the jump and dash cooldown timers
@@ -60,4 +60,4 @@ func accept_jump():
     # increase the jump count and reset the jump cooldown timer
     _jump_count += 1
     _jump_cooldown_remaining = jump_cooldown
-    player.anim_tree.set("parameters/Jump/active", 1)
+    player.anim_tree.set("parameters/Jump/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

@@ -18,7 +18,7 @@ func process(delta):
     if player.controls.is_surging():
         # count towards the surge charge duration and navigate to the surging animation state
         _surge_charge_duration = min(surge_charge_duration, _surge_charge_duration + delta)
-        player.anim_tree.set("parameters/RootState/current", 4)
+        player.anim_tree.set("parameters/RootState/transition_request", "surging")
     elif _surge_charge_duration >= surge_charge_duration && _surge_cooldown_remaining <= 0:
         # otherwise if the player has sufficiently charged the surge, reset the surge cooldown and
         # charge duration timers, and also transition to the Swimming Surging state
@@ -28,7 +28,7 @@ func process(delta):
     else:
         # otherwise reset the surge charge duration and navigate to the swimming animation state
         _surge_charge_duration = 0
-        player.anim_tree.set("parameters/RootState/current", 3)
+        player.anim_tree.set("parameters/RootState/transition_request", "swimming")
 
 func exit():
     # reset the player skin's rotation in the X axis when exiting water
