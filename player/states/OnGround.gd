@@ -23,5 +23,7 @@ func process(delta):
         state_machine.transition_to("OnGround/Stopped")
 
 func physics_process(delta):
-    # set the checked ground blend position to player's horizontal speed divided by 10, the running speed
-    player.anim_tree.set("parameters/OnGround/blend_position", player.horizontal_velocity.length() / 10.0)
+	# set the checked ground blend position to player's horizontal speed divided by 10, the running speed
+	# lerp for smooth blending
+	var new_blend_pos = lerp(player.anim_tree.get("parameters/OnGround/blend_position"), player.horizontal_velocity.length() / 10.0, 0.1)
+	player.anim_tree.set("parameters/OnGround/blend_position", new_blend_pos)
