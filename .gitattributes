@@ -1,2 +1,24 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+preview.gif filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-swim-up.png filter=lfs diff=lfs merge=lfs -text
+assets/textures/grass256x256.png filter=lfs diff=lfs merge=lfs -text
+assets/textures/wood256x256.png filter=lfs diff=lfs merge=lfs -text
+assets/textures/dirt256x256.png filter=lfs diff=lfs merge=lfs -text
+assets/thumb-stick-arrow.png filter=lfs diff=lfs merge=lfs -text
+icon.png filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-crouch.png filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-dash.png filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-jump.png filter=lfs diff=lfs merge=lfs -text
+assets/thumb-stick-ring.png filter=lfs diff=lfs merge=lfs -text
+assets/joystick-reticle.png filter=lfs diff=lfs merge=lfs -text
+assets/textures/concrete256x256.png filter=lfs diff=lfs merge=lfs -text
+android/build/res/drawable-nodpi/splash.png filter=lfs diff=lfs merge=lfs -text
+android/build/res/drawable-nodpi/splash_bg_color.png filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-sprint.png filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-surge.png filter=lfs diff=lfs merge=lfs -text
+assets/icons/icon-swim-down.png filter=lfs diff=lfs merge=lfs -text
+assets/models/CombatPack.glb filter=lfs diff=lfs merge=lfs -text
+android/build/libs/debug/godot-lib.debug.aar filter=lfs diff=lfs merge=lfs -text
+android/build/libs/release/godot-lib.release.aar filter=lfs diff=lfs merge=lfs -text
+android/build/gradle/wrapper/gradle-wrapper.jar filter=lfs diff=lfs merge=lfs -text

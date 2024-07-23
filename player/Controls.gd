@@ -44,13 +44,7 @@ func _ready():
 func _process(delta):
     # if the mouse cursor is being captured in the game window
     if _is_capturing:
-        # determine the movement direction based checked the input strengths of the four movement directions
-        var dx := Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-        var dy := Input.get_action_strength("move_forward") - Input.get_action_strength("move_backwards")
-
-        # and set the movement direction vector to the normalized vector so the player can't unintentionally
-        # move faster when moving diagonally
-        _move_vec = Vector2(dx, -dy).normalized()
+        _move_vec = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
     elif _is_touchscreen:
         # othwerise if we're checked a touchscreen device, get the movement direction, camera rotation and
         # zoom scale values from the mobile controls node

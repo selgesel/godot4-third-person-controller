@@ -26,6 +26,7 @@ grow_vertical = 2
 script = ExtResource("3")
 
 [node name="MoveStick" parent="MobileControls" instance=ExtResource("2")]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
@@ -35,7 +36,7 @@ offset_bottom = 0.0
 grow_vertical = 0
 
 [node name="Controls" type="Control" parent="MobileControls"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -47,7 +48,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MobileControls/Controls"]
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -62,94 +63,58 @@ theme_override_constants/separation = 32
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MobileControls/Controls/VBoxContainer"]
-offset_right = 256.0
-offset_bottom = 64.0
+layout_mode = 2
 
 [node name="JumpButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer" instance=ExtResource("4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 96.0
-offset_right = 160.0
-offset_bottom = 64.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 button_texture = ExtResource("9")
 action = "jump"
 
 [node name="SwimUpButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer" instance=ExtResource("4")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 96.0
-offset_right = 160.0
-offset_bottom = 64.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 button_texture = ExtResource("5")
 action = "swim_up"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MobileControls/Controls/VBoxContainer"]
-offset_top = 96.0
-offset_right = 256.0
-offset_bottom = 160.0
+layout_mode = 2
 theme_override_constants/separation = 128
 
 [node name="Placeholder" type="Control" parent="MobileControls/Controls/VBoxContainer/HBoxContainer"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 64.0
-offset_bottom = 64.0
+layout_mode = 2
 
 [node name="SprintButton" parent="MobileControls/Controls/VBoxContainer/HBoxContainer" instance=ExtResource("4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 64.0
-offset_bottom = 64.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 button_texture = ExtResource("10")
 action = "sprint"
 
 [node name="DashButton" parent="MobileControls/Controls/VBoxContainer/HBoxContainer" instance=ExtResource("4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 192.0
-offset_right = 256.0
-offset_bottom = 64.0
-action = ""
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 
 [node name="SurgeButton" parent="MobileControls/Controls/VBoxContainer/HBoxContainer" instance=ExtResource("4")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 384.0
-offset_right = 448.0
-offset_bottom = 64.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 button_texture = ExtResource("6")
 action = "surge"
 
 [node name="CenterContainer2" type="CenterContainer" parent="MobileControls/Controls/VBoxContainer"]
-offset_top = 192.0
-offset_right = 256.0
-offset_bottom = 256.0
+layout_mode = 2
 
 [node name="CrouchButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer2" instance=ExtResource("4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 96.0
-offset_right = 160.0
-offset_bottom = 64.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 button_texture = ExtResource("8")
 action = "crouch"
 
 [node name="SwimDownButton" parent="MobileControls/Controls/VBoxContainer/CenterContainer2" instance=ExtResource("4")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 96.0
-offset_right = 160.0
-offset_bottom = 64.0
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 button_texture = ExtResource("11")
 action = "swim_down"

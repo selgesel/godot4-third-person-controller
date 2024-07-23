@@ -50,5 +50,8 @@ Each button displays an icon that (hopefully) explains the action that they perf
 | Pinch In (Two Fingers) | Screen | Move the camera further away from the player |
 | Pinch Out (Two Fingers) | Screen | Move the camera closer to the player |
 
+## How to Contribute
+If you'd like to fix a bug or make some changes, please see the [Contribution Guide](./CONTRIBUTING.md).
+
 ## License
 MIT

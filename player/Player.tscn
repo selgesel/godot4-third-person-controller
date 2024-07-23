@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c0vnqt6uyxaoa"]
+[gd_scene load_steps=57 format=3 uid="uid://c0vnqt6uyxaoa"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1"]
 [ext_resource type="PackedScene" path="res://player/ControllableCamera.tscn" id="2"]
@@ -84,18 +84,22 @@ blend_point_1/node = SubResource("33")
 blend_point_1/pos = 1.0
 
 [sub_resource type="AnimationNodeTransition" id="35"]
-enabled_inputs = 5
 xfade_time = 0.2
 input_0/name = "on-ground"
 input_0/auto_advance = false
+input_0/reset = true
 input_1/name = "in-air"
 input_1/auto_advance = false
+input_1/reset = true
 input_2/name = "crouching"
 input_2/auto_advance = false
+input_2/reset = true
 input_3/name = "swimming"
 input_3/auto_advance = false
+input_3/reset = true
 input_4/name = "surging"
 input_4/auto_advance = false
+input_4/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="48"]
 animation = &"unarmed-surge-charge"
@@ -142,9 +146,7 @@ nodes/Surging/position = Vector2(-360, 540)
 nodes/Swimming/node = SubResource("44")
 nodes/Swimming/position = Vector2(-360, 400)
 nodes/output/position = Vector2(400, 160)
-node_connections = [&"output", 0, &"RootState", &"Jump", 0, &"Jumping", &"Jump", 1, &"Animation 2", &"RootState", 0, &"OnGround", &"RootState", 1, &"Jump", &"RootState", 2, &"Crouching", &"RootState", 3, &"Swimming", &"RootState", 4, &"Surging"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_8horh"]
+node_connections = [&"Jump", 0, &"Jumping", &"Jump", 1, &"Animation 2", &"RootState", 0, &"OnGround", &"RootState", 1, &"Jump", &"RootState", 2, &"Crouching", &"RootState", 3, &"Swimming", &"RootState", 4, &"Surging", &"output", 0, &"RootState"]
 
 [sub_resource type="StandardMaterial3D" id="16"]
 transparency = 1
@@ -189,9 +191,9 @@ curve = SubResource("25")
 direction = Vector3(0, 0, 1)
 spread = 15.0
 flatness = 0.38
-gravity = Vector3(0, 0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("26")
 color = Color(1, 1, 1, 0.537255)
 color_ramp = SubResource("24")
@@ -309,13 +311,13 @@ bones/63/rotation = Quaternion(-6.53044e-08, 0.998154, 0.0607268, -5.16008e-08)
 bones/64/position = Vector3(0.00141798, 0.0999746, 0.00175011)
 
 [node name="AnimationTree" type="AnimationTree" parent="Skin"]
+root_node = NodePath("../CombatPack")
 tree_root = SubResource("36")
 anim_player = NodePath("../CombatPack/AnimationPlayer")
-active = true
 parameters/Crouching/blend_position = 0
 parameters/Jump/active = false
+parameters/Jump/internal_active = false
 parameters/Jump/request = 0
-parameters/Jumping/playback = SubResource("AnimationNodeStateMachinePlayback_8horh")
 parameters/OnGround/blend_position = 0.0
 parameters/RootState/current_state = "on-ground"
 parameters/RootState/transition_request = ""

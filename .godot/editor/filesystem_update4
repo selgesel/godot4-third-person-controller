@@ -1,10 +1,5 @@
 res://Main.tscn
-res://assets/materials/Grass.tres
-res://assets/materials/Concrete.tres
-res://assets/materials/Wood.tres
 res://player/Player.tscn
 res://player/Controls.tscn
-res://player/states/Jumping.gd
-res://player/states/Dashing.gd
-res://player/states/Surging.gd
-res://player/Player.gd
+res://player/Controls.gd
+res://player/states/OnGround.gd
